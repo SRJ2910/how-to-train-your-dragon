@@ -1,0 +1,127 @@
+{
+    "__verbose": {
+        "content": "<input type=\"toggle\" value=\"on\" state=\"on\" room:<escape>bedroom<escape>}<end_function_call>",
+        "generation_settings": {
+            "backend_sampling": false,
+            "chat_format": "peg-native",
+            "dry_allowed_length": 2,
+            "dry_base": 1.75,
+            "dry_multiplier": 0.0,
+            "dry_penalty_last_n": 32768,
+            "dry_sequence_breakers": [
+                "\n",
+                ":",
+                "\"",
+                "*"
+            ],
+            "dynatemp_exponent": 1.0,
+            "dynatemp_range": 0.0,
+            "frequency_penalty": 0.0,
+            "generation_prompt": "<start_of_turn>model\n",
+            "grammar": "",
+            "grammar_lazy": false,
+            "grammar_triggers": [],
+            "ignore_eos": false,
+            "logit_bias": [],
+            "lora": [],
+            "max_tokens": 50,
+            "min_keep": 0,
+            "min_p": 0.05000000074505806,
+            "mirostat": 0,
+            "mirostat_eta": 0.10000000149011612,
+            "mirostat_tau": 5.0,
+            "n_discard": 0,
+            "n_keep": 0,
+            "n_predict": 50,
+            "n_probs": 0,
+            "post_sampling_probs": false,
+            "presence_penalty": 0.0,
+            "preserved_tokens": [],
+            "reasoning_format": "deepseek",
+            "reasoning_in_content": false,
+            "repeat_last_n": 64,
+            "repeat_penalty": 1.0,
+            "samplers": [
+                "penalties",
+                "dry",
+                "top_n_sigma",
+                "top_k",
+                "typ_p",
+                "top_p",
+                "min_p",
+                "xtc",
+                "temperature"
+            ],
+            "seed": 4294967295,
+            "speculative.types": "none",
+            "stop": [],
+            "stream": false,
+            "temperature": 0.800000011920929,
+            "timings_per_token": false,
+            "top_k": 64,
+            "top_n_sigma": -1.0,
+            "top_p": 0.949999988079071,
+            "typical_p": 1.0,
+            "xtc_probability": 0.0,
+            "xtc_threshold": 0.10000000149011612
+        },
+        "has_new_line": false,
+        "id_slot": 3,
+        "index": 0,
+        "model": "functiongemma-trial-268M-3-Q8_0.gguf",
+        "prompt": "<bos><start_of_turn>developer\nYou are an on-device smart home controller. Given a natural language command from the user, call the appropriate smart home function. If the user does not specify a required value (e.g. which room or what temperature), omit that parameter from the function call. Maintain context across conversation turns to resolve pronouns and sequential commands.<start_function_declaration>declaration:toggle_lights{description:<escape>Turn lights on or off in a specified room.<escape>,parameters:{properties:{room:{description:<escape>The room whose lights to control.<escape>,enum:[<escape>living_room<escape>,<escape>bedroom<escape>,<escape>kitchen<escape>,<escape>bathroom<escape>,<escape>office<escape>,<escape>hallway<escape>],type:<escape>STRING<escape>},state:{description:<escape>Whether to turn lights on or off.<escape>,enum:[<escape>on<escape>,<escape>off<escape>],type:<escape>STRING<escape>}},type:<escape>OBJECT<escape>}}<end_function_declaration><start_function_declaration>declaration:set_thermostat{description:<escape>Set the temperature for heating or cooling.<escape>,parameters:{properties:{mode:{description:<escape>The thermostat mode: heat, cool, or auto.<escape>,enum:[<escape>heat<escape>,<escape>cool<escape>,<escape>auto<escape>],type:<escape>STRING<escape>},temperature:{description:<escape>The target temperature in degrees Fahrenheit (60-80).<escape>,type:<escape>INTEGER<escape>}},type:<escape>OBJECT<escape>}}<end_function_declaration><start_function_declaration>declaration:lock_door{description:<escape>Lock or unlock a door.<escape>,parameters:{properties:{door:{description:<escape>Which door to lock or unlock.<escape>,enum:[<escape>front<escape>,<escape>back<escape>,<escape>garage<escape>,<escape>side<escape>],type:<escape>STRING<escape>},state:{description:<escape>Whether to lock or unlock the door.<escape>,enum:[<escape>lock<escape>,<escape>unlock<escape>],type:<escape>STRING<escape>}},type:<escape>OBJECT<escape>}}<end_function_declaration><start_function_declaration>declaration:get_device_status{description:<escape>Query the current state of a device or room.<escape>,parameters:{properties:{device_type:{description:<escape>The type of device to check.<escape>,enum:[<escape>lights<escape>,<escape>thermostat<escape>,<escape>door<escape>,<escape>all<escape>],type:<escape>STRING<escape>},room:{description:<escape>The room or location to check.<escape>,type:<escape>STRING<escape>}},type:<escape>OBJECT<escape>}}<end_function_declaration><start_function_declaration>declaration:set_scene{description:<escape>Activate a predefined scene that controls multiple devices at once.<escape>,parameters:{properties:{scene:{description:<escape>The scene to activate.<escape>,enum:[<escape>movie_night<escape>,<escape>bedtime<escape>,<escape>morning<escape>,<escape>away<escape>,<escape>party<escape>],type:<escape>STRING<escape>}},type:<escape>OBJECT<escape>}}<end_function_declaration><start_function_declaration>declaration:intent_unclear{description:<escape>Call when the user's request is ambiguous, off-topic, or cannot be mapped to any available smart home function.<escape>,parameters:{properties:{reason:{description:<escape>Why the intent is unclear.<escape>,enum:[<escape>ambiguous<escape>,<escape>off_topic<escape>,<escape>incomplete<escape>,<escape>unsupported_device<escape>],type:<escape>STRING<escape>}},type:<escape>OBJECT<escape>}}<end_function_declaration><end_of_turn>\n<start_of_turn>user\nturn on bedroom lights please<end_of_turn>\n<start_of_turn>model\n",
+        "stop": true,
+        "stop_type": "eos",
+        "stopping_word": "",
+        "timings": {
+            "cache_n": 0,
+            "predicted_ms": 221.526,
+            "predicted_n": 22,
+            "predicted_per_second": 99.31114180728221,
+            "predicted_per_token_ms": 10.069363636363637,
+            "prompt_ms": 283.115,
+            "prompt_n": 657,
+            "prompt_per_second": 2320.6117655369726,
+            "prompt_per_token_ms": 0.4309208523592085
+        },
+        "tokens": [],
+        "tokens_cached": 678,
+        "tokens_evaluated": 657,
+        "tokens_predicted": 22,
+        "truncated": false
+    },
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": "<input type=\"toggle\" value=\"on\" state=\"on\" room:<escape>bedroom<escape>}<end_function_call>",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 1780230984,
+    "id": "chatcmpl-Obk0iFvbGbRH3EctpHCRFG5dp9XucyIo",
+    "model": "functiongemma-trial-268M-3-Q8_0.gguf",
+    "object": "chat.completion",
+    "system_fingerprint": "b9439-22cadc194",
+    "timings": {
+        "cache_n": 0,
+        "predicted_ms": 221.526,
+        "predicted_n": 22,
+        "predicted_per_second": 99.31114180728221,
+        "predicted_per_token_ms": 10.069363636363637,
+        "prompt_ms": 283.115,
+        "prompt_n": 657,
+        "prompt_per_second": 2320.6117655369726,
+        "prompt_per_token_ms": 0.4309208523592085
+    },
+    "usage": {
+        "completion_tokens": 22,
+        "prompt_tokens": 657,
+        "prompt_tokens_details": {
+            "cached_tokens": 0
+        },
+        "total_tokens": 679
+    }
+}
