@@ -1,0 +1,214 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "set_device_state",
+      "description": "Turns a specific smart home device or appliance on or off.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "device": { "type": "string", "description": "The name of the device (e.g., lights, coffee maker, garage door, humidifier, security camera)." },
+          "state": { "type": "string", "enum": ["on", "off", "open", "closed", "locked"], "description": "The desired operational state of the device." },
+          "room": { "type": "string", "description": "Optional room location of the device (e.g., living room, kitchen, garage, backyard)." }
+        },
+        "required": ["device", "state"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_device_status",
+      "description": "Retrieves the current real-time status or state of a smart appliance.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "device": { "type": "string", "description": "The name of the device to query (e.g., front door lock, garage door, washing machine, coffee maker)." }
+        },
+        "required": ["device"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_security_mode",
+      "description": "Sets the operational mode of the home security system.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "mode": { "type": "string", "enum": ["stay", "away", "disarmed"], "description": "The security profile arming state." }
+        },
+        "required": ["mode"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_climate",
+      "description": "Adjusts the climate control or smart thermostat temperature setting for a room.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The designated room or zone (e.g., kitchen)." },
+          "temperature": { "type": "number", "description": "The target temperature value in degrees Celsius." }
+        },
+        "required": ["room", "temperature"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "bulk_control_plugs",
+      "description": "Controls all smart plugs simultaneously while allowing specific exclusions.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "state": { "type": "string", "enum": ["on", "off"], "description": "The power state to apply to the plugs." },
+          "exclude": { "type": "array", "items": { "type": "string" }, "description": "List of specific plug names to exempt from the action." }
+        },
+        "required": ["state"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_light_brightness",
+      "description": "Changes the brightness level of dimmable smart lights.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The room containing the lights (e.g., bedroom, backyard)." },
+          "brightness": { "type": "integer", "description": "The brightness level expressed as a percentage from 1 to 100." },
+          "device": { "type": "string", "description": "Optional specific light device name (e.g., patio lights)." }
+        },
+        "required": ["room", "brightness"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "play_media",
+      "description": "Plays music or media stream matching a genre or playlist targeting a specific room speaker.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The room speaker system location." },
+          "genre": { "type": "string", "description": "The style or mood classification of the audio." },
+          "media_type": { "type": "string", "enum": ["music", "podcast", "radio"], "description": "The media format categorization." }
+        },
+        "required": ["room", "genre", "media_type"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_media_timer",
+      "description": "Configures a sleep countdown timer to automatically shut off running media.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The room containing the active media session." },
+          "duration_minutes": { "type": "integer", "description": "Timer length in minutes before cutoff execution." }
+        },
+        "required": ["room", "duration_minutes"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "broadcast_message",
+      "description": "Broadcasts a text-to-speech voice message out of a smart home audio speaker.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "target_speaker": { "type": "string", "description": "The destination speaker entity name." },
+          "message": { "type": "string", "description": "The explicit text phrase to announce." }
+        },
+        "required": ["target_speaker", "message"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "control_vacuum",
+      "description": "Issues localized movement controls to a robotic vacuum system.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["start", "stop", "dock", "pause"], "description": "The movement instruction command." },
+          "zone": { "type": "string", "description": "Optional physical target zone restriction (e.g., hallway)." }
+        },
+        "required": ["action"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_sensor_data",
+      "description": "Queries discrete reading data from environmental sensors.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The specific room tracking location." },
+          "sensor_type": { "type": "string", "enum": ["temperature", "humidity", "motion"], "description": "The sensor telemetry type to fetch." }
+        },
+        "required": ["room", "sensor_type"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_device_mode",
+      "description": "Updates specific internal execution algorithms of an appliance.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The room containing the device." },
+          "device": { "type": "string", "description": "The appliance profile target name (e.g., humidifier)." },
+          "mode": { "type": "string", "description": "The desired running routine setting (e.g., auto, eco, manual)." }
+        },
+        "required": ["room", "device", "mode"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_light_color",
+      "description": "Modifies the current colour profile of color-changing RGB smart lights.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room": { "type": "string", "description": "The space configuration location." },
+          "device": { "type": "string", "description": "The target lighting element fixture name." },
+          "color": { "type": "string", "description": "The target colour string value (e.g., blue, red, green)." }
+        },
+        "required": ["room", "device", "color"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "brew_beverage",
+      "description": "Commands a smart coffee maker tool to start brewing an explicit drink type selection.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["espresso", "coffee", "latte", "cappuccino"], "description": "The recipe selection profile." }
+        },
+        "required": ["type"]
+      }
+    }
+  }
+]
